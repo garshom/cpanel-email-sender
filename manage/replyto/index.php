@@ -233,7 +233,7 @@ table {
                                                             <tr>
                                                                 <td>
 
-                                                                    <input name="subject" type="text" value="" style="width:500px; height:37px; font-family: Verdana; font-size: 13px; font-weight: light; color:#000000; 
+                                                                    <input name="email_subject" type="text" value="" style="width:500px; height:37px; font-family: Verdana; font-size: 13px; font-weight: light; color:#000000; 
 				background-color: #E6E6E6; border: solid 1px #333; padding: 8px; 
 				-moz-border-radius: 2px; -webkit-border-radius: 2px; -khtml-border-radius: 2px; border-radius: 2px;
 				-webkit-box-shadow: 0px 0px 8px 3px #000000; box-shadow: 0px 0px 8px 3px #000000;" required="" placeholder="Enter subject">

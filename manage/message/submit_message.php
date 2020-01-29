@@ -1,31 +1,35 @@
 <?php
 
 session_start();
-error_reporting("ALL");
+error_reporting(ALL);
+
+
 
 if(isset($_POST["submitbutton"])){
 
     if(isset($_REQUEST['htmlmessage'])){
-        $reciever = trim($_SESSION["email_address"]);
-        $replyto_email = $_SESSION['replyto_email'];
+        
+        $to = trim($_SESSION["reciever_email_address"]);
+        $replyto = trim($_SESSION['replyto_email']);
         $replyto_subject = $_SESSION['replyto_subject'];
-        $subject = $_SESSION['subject'];
-        $senders_email =  $_SESSION['senders_email'];
+        $subject = $_SESSION['email_subject'];
+        $senders_email = trim($_SESSION['senders_email']);
         $htmlmessage = trim($_REQUEST["htmlmessage"]);
-
-        $subject = $replyto_subject;
+        
         $head = "MIME-Version: 1.0" . "\r\n";
         $head .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $head .= "From: ".$senders_email . "<". $replyto_subject. ">"."\r\n".
-        'Reply-To: '.$replyto_email. "<". $replyto_subject. ">"."\r\n" .
+        $head .= "From: ".$replyto_subject."<".$senders_email.">" ."\r\n".
+        'Reply-To: '.$replyto_subject. "<". $replyto. ">"."\r\n" .
         'X-Mailer: PHP/' . phpversion();
         
-        if(mail($reciever,$subject,$htmlmessage,$head)){
-           echo "Successfuly sent";
+        if(mail($to,$subject,$htmlmessage,$head)){
+            header("Location:../../manage/single?email=");
         }else{
             header("Location:./");
         }
+        
     }else{
+        
         header("Location:./");
     }
     
@@ -35,6 +39,7 @@ if(isset($_POST["submitbutton"])){
     }
 
 }else{
+    
     header("Location:./");
 }
 
